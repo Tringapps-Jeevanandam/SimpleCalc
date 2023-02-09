@@ -107,6 +107,7 @@ class Division extends Operation {
           default:
             Log.info("Invalid operator");
             continue;
+            return;
         }
         result = calculator.calculate();
         String res = Double.toString(result);
