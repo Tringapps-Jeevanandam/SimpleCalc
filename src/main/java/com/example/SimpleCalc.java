@@ -105,7 +105,7 @@ public class SimpleCalc {
           break;
         default:
           Log.info("Invalid operator");
-          continue;
+         
       }
       if(calculator!=null){
         result = calculator.calculate();
