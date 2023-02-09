@@ -7,7 +7,7 @@ abstract class Operation {
   private double num1;
   private double num2;
 
-  public Operation(double num1, double num2) {
+  protected Operation(double num1, double num2) {
     this.setNum1(num1);
     this.setNum2(num2);
   }
@@ -85,7 +85,7 @@ public class SimpleCalc {
       String operation = sc.next();
       if (operation.equals("1")) {
         flag = false;
-        break;
+        continue;
       }
       Log.info("Enter second number: ");
       double num2 = sc.nextDouble();
@@ -107,9 +107,12 @@ public class SimpleCalc {
           Log.info("Invalid operator");
           continue;
       }
-      result = calculator.calculate();
-      String res = Double.toString(result);
-      Log.info(res);
+      if(calculator!=null){
+        result = calculator.calculate();
+        String res = Double.toString(result);
+        Log.info(res);
+      }
+     
     }
   }
 }
