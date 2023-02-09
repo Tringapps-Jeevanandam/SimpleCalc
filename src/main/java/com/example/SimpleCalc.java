@@ -81,38 +81,41 @@ class Division extends Operation {
       double num1 = sc.nextDouble();
       double result = num1;
       boolean flag = true;
+      
       do {
         Log.info("Enter operation (+, -, , /, exit[press 1]): ");
         String operation = sc.next();
+      
         if (operation.equals("1")) {
           flag = false;
-          break;
+        } else {
+          Log.info("Enter second number: ");
+          double num2 = sc.nextDouble();
+          Operation calculator;
+      
+          switch (operation) {
+            case "+":
+              calculator = new Addition(result, num2);
+              break;
+            case "-":
+              calculator = new Subtraction(result, num2);
+              break;
+            case "":
+              calculator = new Multiplication(result, num2);
+              break;
+            case "/":
+              calculator = new Division(result, num2);
+              break;
+            default:
+              Log.info("Invalid operator");
+              continue;
+          }
+          result = calculator.calculate();
+          String res = Double.toString(result);
+          Log.info(res);
         }
-        Log.info("Enter second number: ");
-        double num2 = sc.nextDouble();
-        Operation calculator;
-        switch (operation) {
-          case "+":
-            calculator = new Addition(result, num2);
-            break;
-          case "-":
-            calculator = new Subtraction(result, num2);
-            break;
-          case "":
-            calculator = new Multiplication(result, num2);
-            break;
-          case "/":
-            calculator = new Division(result, num2);
-            break;
-          default:
-            Log.info("Invalid operator");
-            continue;
-            return;
-        }
-        result = calculator.calculate();
-        String res = Double.toString(result);
-        Log.info(res);
       } while (flag);
+      
     }
   }
   
